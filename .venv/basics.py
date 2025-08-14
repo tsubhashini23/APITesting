@@ -62,13 +62,14 @@ assert postResponse.json()["title"] == "TS"
 url_put = "https://fakerestapi.azurewebsites.net/api/v1/Books/300"
 
 head_put = {
-    "Accept": "text/plain"
+    "Accept": "text/plain",
+    "Content-Type": "application/json"
 }
 
 data = {
 
   "id": 300,
-  "title": "Alchemist",
+  "title": "Max",
   "description": "string",
   "pageCount": 200,
   "excerpt": "string",
@@ -81,5 +82,5 @@ putResponse = requests.put(url_put, headers = head_put, json = data)
 print(putResponse.status_code)
 print(putResponse.json())
 
-assert putResponse.json()["title"] == "Alchemist"
+assert putResponse.json()["title"] == "Max"
 
