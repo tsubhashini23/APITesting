@@ -9,7 +9,7 @@ head = {
 }
 
 data = {
-  "name": "queen",
+  "name": "decor",
   "email": f"queen_{int(time.time())}@gmail.com",
   "gender": "female",
   "status": "active"
@@ -17,19 +17,19 @@ data = {
 
 url = "https://gorest.co.in/public/v2/users"
 
-#POST
+#POST with authorization
 
 postResponse = requests.post(url, headers = head, json = data)
 
 print(postResponse.status_code)
 print(postResponse.json())
 
-assert postResponse.json()["name"] == "queen"
+assert postResponse.json()["name"] == "decor"
 
-#GET
+#GET with authorization
 
 getResponse = requests.get(url+"/"+str(postResponse.json()["id"]), headers = head)
 
 print(getResponse.json())
 
-assert getResponse.json()["name"] == "queen"
+assert getResponse.json()["name"] == "decor"
